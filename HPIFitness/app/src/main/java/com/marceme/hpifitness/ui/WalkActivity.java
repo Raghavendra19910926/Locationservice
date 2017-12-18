@@ -188,7 +188,7 @@ public class WalkActivity extends FragmentActivity implements OnMapReadyCallback
                     mRealm.beginTransaction();
 //                    user.setDistanceCovered(Float.parseFloat(String.valueOf((distanceWalked/1000.0)).substring(0,2))); KM
 //                    user.setDistanceCovered(Helper.meterToMileConverter(distanceWalked)); // m/p
-                    user.setDistanceCovered((float) (distanceWalked/1000.0)); // m/p
+                    user.setDistanceCovered(distanceWalked); // m/p
                     user.setTotalTimeWalk(timeWalked);
 //                    user.setTotalTimeWalk(timeWalked);
                     user.setPace(Helper.calculatePace(timeWalked,distanceWalked)); // m/s

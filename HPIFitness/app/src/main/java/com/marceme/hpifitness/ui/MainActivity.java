@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDailyStat(User user) {
         String message = String.format(getString(R.string.message_label), user.getFirstName());
-        String dailyDist = String.valueOf(user.getDistanceCovered());
+        String dailyDist = String.valueOf((float) (user.getDistanceCovered() / 1000.0));
         String dailyTime = String.valueOf(Helper.secondToHHMMSS(user.getTotalTimeWalk()));
         double dailyPace = user.getPace();
 
@@ -68,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
         double MET = ((0.175 * dailyPace) + (0.9 * dailyPace)) / 3.5;
         double Total_Calories = Helper.secondToMinuteConverter(user.getTotalTimeWalk()) * (MET * 3.5 * 65) / 200;
-        mCurrentPace.setText(String.valueOf(dailyPace) + " M/S" + " \nCalories " + Total_Calories);
+
+        float speed = user.getDistanceCovered() / user.getTotalTimeWalk();
+
+        mCurrentPace.setText(String.valueOf(dailyPace) + " M/S" + " \nCalories " + Total_Calories + " \nSpeed " + speed * 3.16 + " KM/h");
     }
 
 
